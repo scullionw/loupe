@@ -2,6 +2,7 @@
     "manifest_version": 2,
     "name": "Loupe",
     "version": "1.0",
+    "homepage_url": "https://github.com/scullionw/loupe/",
     "description": "Highlights occurences of selected word in page.",
     "icons": {
         "96": "icons/loupe-96.png",
