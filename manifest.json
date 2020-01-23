@@ -43,7 +43,7 @@
     ],
     "applications": {
         "gecko": {
-            "id": "loupe@scullionw.com"
+            "id": "@loupe-extension"
         }
     }
 }
