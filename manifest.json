@@ -19,16 +19,14 @@
         }
     },
     "background": {
-        "scripts": [
-            "background.js"
-        ]
+        "page": "background/background.html"
     },
     "permissions": [
         "find",
         "storage"
     ],
     "options_ui": {
-        "page": "options.html",
+        "page": "options/options.html",
         "browser_style": true
     },
     "content_scripts": [

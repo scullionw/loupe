@@ -1,6 +1,9 @@
 "use strict";
 
-async function highlight_selection(text, opts) {
+import { load_option } from './../options/optionslib.js'
+
+async function highlight_selection(raw_text, opts) {
+    let text = await load_option("trim_selection") ? raw_text.trim() : raw_text;
     let result = await browser.find.find(text, opts);
     if (result.count) {
         browser.find.highlightResults({ tabId: opts.tabId });
@@ -12,12 +15,10 @@ function clear_selection() {
 }
 
 async function options(tab_id) {
-    let opts = await browser.storage.sync.get(["case_sensitive", "entire_word"]);
-
     return {
         tabId: tab_id,
-        caseSensitive: opts["case_sensitive"] === "true",
-        entireWord: opts["entire_word"] === "true"
+        caseSensitive: await load_option("case_sensitive"),
+        entireWord: await load_option("entire_word"),
     }
 }
 
@@ -30,7 +31,7 @@ async function handle_message(msg, sender) {
     }
 }
 
-async function main() {
+function main() {
     browser.runtime.onMessage.addListener(handle_message);
 
     browser.browserAction.onClicked.addListener(() => {
